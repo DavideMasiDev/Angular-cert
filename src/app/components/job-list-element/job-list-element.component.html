@@ -1,0 +1,15 @@
+<div class="job-container">
+  <div class="logo">
+    <img [src]="job.companyLogo" alt="Company Logo" />
+  </div>
+  <div class="details">
+    <h3 class="job-title">{{job.title}}</h3>
+    <p class="company-info">
+      <span>{{job.companyName}}</span>
+      <span>{{job.reference}}</span>
+    </p>
+  </div>
+  <div>
+    <span [id]="'star-'+job.id" class="icon-star" style="color: #626262"></span>
+  </div>
+</div>
