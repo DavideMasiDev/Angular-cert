@@ -12,10 +12,10 @@ import {JobListElementComponent} from "../../components/job-list-element/job-lis
     NgForOf,
     JobListElementComponent
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './jobs.component.html',
+  styleUrl: './jobs.component.css'
 })
-export class HomeComponent implements OnInit{
+export class JobsComponent implements OnInit{
   jobList: Array<Job> = [];
 
   constructor(private jobService: JobService){}

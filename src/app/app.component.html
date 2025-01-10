@@ -1,1 +1,10 @@
+<h1 style="text-align: center; color: #5d5d5d">Find Your Job</h1>
+<div class="tabs">
+  <div class="tab-button"
+       [class.active]="activeTab === 'jobs'"
+       (click)="tabSwitch('jobs')">JOBS</div>
+  <div class="tab-button"
+       [class.active]="activeTab === 'favorites'"
+       (click)="tabSwitch('favorites')">FAVORITES</div>
+</div>
 <router-outlet/>
