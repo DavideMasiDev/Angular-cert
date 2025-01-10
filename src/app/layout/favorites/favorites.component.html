@@ -1,1 +1,9 @@
-<p style="color: #5c5c5c; text-align: center">No favorites element selected!</p>
+<p *ngIf="favoriteItems.length === 0" style="color: #5c5c5c; text-align: center">No favorites element selected!</p>
+<ng-container *ngIf="favoriteItems.length > 0">
+  <ng-container  *ngFor="let job of jobList">
+    <app-job-list-element [job]="job"
+                          [showStar]="false"
+                          [favoriteItems]="favoriteItems"
+                          (jobClicked)="goToJob($event)"></app-job-list-element>
+  </ng-container>
+</ng-container>

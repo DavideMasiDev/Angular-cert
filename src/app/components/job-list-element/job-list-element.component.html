@@ -3,13 +3,19 @@
     <img [src]="job.companyLogo" alt="Company Logo" />
   </div>
   <div class="details">
-    <h3 class="job-title">{{job.title}}</h3>
+    <div style="display: flex">
+      <h3 class="job-title" (click)="jobClicked.emit(job.id)">{{job.title}}</h3>
+    </div>
     <p class="company-info">
       <span>{{job.companyName}}</span>
       <span>{{job.reference}}</span>
     </p>
   </div>
-  <div>
-    <span [id]="'star-'+job.id" class="icon-star" style="color: #5d5d5d"></span>
+  <div *ngIf="showStar">
+    <span #star [id]="'star-'+job.id"
+          (click)="starClicked.emit(star.id)"
+          [class.active]="favoriteItems.includes(star.id)"
+          class="icon-star"
+          style="color: #5d5d5d"></span>
   </div>
 </div>

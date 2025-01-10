@@ -1,0 +1,24 @@
+<div [hidden]="!jobDetails" class="container">
+  <button class="back-button" (click)="goBack()">
+    <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    Back
+  </button>
+
+  <div class="job-header">
+    <img [src]="jobDetails?.companyLogo" alt="logo" class="job-logo">
+    <div>
+      <h1>{{jobDetails?.title}}</h1>
+      <span class="tag" *ngFor="let type of jobDetails?.types">{{type}}</span>
+      <span class="tag" *ngFor="let industry of jobDetails?.industries">{{formatString(industry)}}</span>
+    </div>
+  </div>
+
+  <div class="job-details">
+    <p><strong>Publish date:</strong> {{jobDetails?.publishDate | date}}</p>
+    <p><strong>Location:</strong> {{jobDetails?.location}}</p>
+    <p><strong>Reference:</strong> {{jobDetails?.reference}}</p>
+    <p><strong>Description:</strong></p>
+    <div #description></div>
+  </div>
+
+</div>

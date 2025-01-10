@@ -1,5 +1,5 @@
 import {AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {tap} from "rxjs";
 
 @Component({
@@ -11,17 +11,20 @@ import {tap} from "rxjs";
 })
 export class AppComponent implements OnInit {
   title = 'ng-job-search';
-  activeTab?: 'jobs' | 'favorites';
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  activeTab?: 'jobs' | 'favorites' = "jobs";
+  currentUrl: string = '';
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
-    if (window.location.href.includes('/jobs')) {
-      this.activeTab = 'jobs';
-    } else if (window.location.href.includes('/favorites')) {
-      this.activeTab = 'favorites';
-    }
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.urlAfterRedirects; // URL aggiornato
+      }
+      if (this.currentUrl === '/jobs' || this.currentUrl === '/favorites') {
+        this.activeTab = this.currentUrl.split('/')[1] as 'jobs' | 'favorites';
+      }
+    });
   }
 
   tabSwitch(tab: 'jobs' | 'favorites') {
